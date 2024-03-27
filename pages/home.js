@@ -1,7 +1,6 @@
 import {
     View,
     Text,
-    SafeAreaView,
     StyleSheet,
     ImageBackground,
     FlatList,
@@ -19,7 +18,7 @@ import {
 
     function deleteDiario (id){
       Firebase.collection ("diario").doc(id).delete();
-      Alert.alert("O diario foi deletado.");
+      Alert.alert("O registro foi deletado.");
     }
 
     useEffect (()=>{
@@ -45,14 +44,43 @@ import {
           </View>
         </View>
   
-<FlatListdata={diario}
+<FlatList
+data={diario}
 renderItem={({item}) => {
   return(
     <View style={estilo.diario}>
-      <TouchableOpacity
-  )
-}
-}
+
+      <TouchableOpacity onPress={()=>navigation.navigate("AlterarDiario",{
+        id: item.id,
+        titulo: item.titulo,
+        texto: item.texto,
+        data: item.data,
+        local: item.local
+      })}>
+
+      <View style={estilo.itens}>
+        <Text style={estilo.titulobanda}> Artista/Banda: <Text style={estilo.textobanda}>{item.artistabanda}
+        </Text></Text><Text style={estilo.titulobanda}> Gênero: <Text style={estilo.textobanda}>{item.genero}
+        </Text></Text>
+        <Text style={estilo.titulobanda}> Música: <Text style={estilo.textobanda}>{item.musica}
+        </Text></Text>
+      </View>
+      </TouchableOpacity>
+
+      <View style={estilo.botaodeletar}>
+        <TouchableOpacity onPress={()=>{deleteDiario(item.id)}}>
+          <MaterialCommunityIcons name="delete-empty" size={70} color="red" />
+        </TouchableOpacity>
+      
+      </View>
+      </View>
+  );
+}}
+/>
+
+<TouchableOpacity style={estilo.addbutton} onPress={()=> navigation.navigate("CadastrarDiario")}>
+  <MaterialCommunityIcons name="plus-circle-outline" size={70} color="green" />
+</TouchableOpacity>
       </View>
     );
   }
@@ -84,6 +112,41 @@ renderItem={({item}) => {
       alignItems: 'center',
       zIndex: 2,
       height: 200
+    },
+    itens:{
+      marginHorizontal: 10,
+      marginVertical: 10,
+      padding: 10,
+    },
+    titulobanda:{
+      fontSize: 13,
+      color: '#fff'
+    },
+    textobanda:{
+      fontSize: 15,
+      fontWeight: 'bold'
+    },
+    musicas: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginHorizontal: 10,
+      marginVertical: 10,
+      padding: 10,
+      backgroundColor: '#0000CD',
+      borderRadius: 10
+    },
+    botaodeletar:{
+      textAlignVertical: 'center',
+      marginVertical: 10,
+    },
+    addbutton: {
+      backgroundColor: '#ffffff',
+      borderRadius: 50,
+      position: 'absolute',
+      left: 20,
+      bottom: 40,
+      justifyContent: 'center',
+      alignItems: 'center'
     },
     containerTexto: {
       flex: 1,
