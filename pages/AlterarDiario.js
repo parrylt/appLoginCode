@@ -27,7 +27,7 @@ return (
   </View>
   <View>
   <TextInput autoCapitalize = 'words' style={estilo.input} placeholder="Digite a Banda/Artista"
-  onChangeText={setBand} value={banda}/>
+  onChangeText={setBanda} value={banda}/>
     <TextInput style={estilo.input} placeholder="Digite o Gênero da música" onChangeText={setGenero} value={genero}/>
     <TextInput style={estilo.input} placeholder="Digite o nome da música" onChangeText={setMusica} value={musica}/>
   <TouchableOpacity
