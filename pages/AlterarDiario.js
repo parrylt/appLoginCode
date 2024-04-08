@@ -6,33 +6,39 @@ export default function AlterarDiario ({navigation,route}){
 
 const id = route.params.id;
 
-const [banda, setBanda] = useState (route.params.banda);
-const [genero, setGenero] = useState (route.params.genero); 
-const [musica, setMusica] = useState (route.params.musica);
+const [titulo, setTitulo] = useState (route.params.titulo);
+const [texto, setTexto] = useState (route.params.texto);
+const [data, setData] = useState (route.params.data); 
+const [local, setLocal] = useState (route.params.local);
 
-function alterarMusica (id,banda,genero,musica){
-  Firebase.collection ("musica").doc(id).update({
-    artistabanda: banda,
-    genero: genero,
-    musica: musica,
+function alterarDiario (id,titulo,texto,data,local){
+  Firebase.collection ("diario").doc(id).update({
+    titulo: titulo,
+    texto: texto,
+    data: data,
+    local: local,
   })
-  Alert.alert ("Aviso", "Música Alterada com sucesso.")
+  Alert.alert ("Aviso", "Diário alterado com sucesso.")
   navigation.navigate("Home")
 }
 
 return (
 <View style={estilo.container}>
 <View>
-  <Text style={estilo.titulo}> Alterar dados da Música </Text>
+  <Text style={estilo.titulo}> Alterar dados do Diário </Text>
   </View>
   <View>
-  <TextInput autoCapitalize = 'words' style={estilo.input} placeholder="Digite a Banda/Artista"
-  onChangeText={setBanda} value={banda}/>
-    <TextInput style={estilo.input} placeholder="Digite o Gênero da música" onChangeText={setGenero} value={genero}/>
-    <TextInput style={estilo.input} placeholder="Digite o nome da música" onChangeText={setMusica} value={musica}/>
+  <TextInput autoCapitalize = 'words' style={estilo.input} placeholder="Digite o título"
+  onChangeText={setTitulo} value={titulo}/>
+    <TextInput style={estilo.input} placeholder='Digite o texto' onChangeText={setTexto}
+            value={texto}/>
+            <TextInput style={estilo.input} placeholder='Digite a data' onChangeText={setData}
+            value={data}/>
+            <TextInput style={estilo.input} placeholder='Digite o local' onChangeText={setLocal}
+            value={local}/>
   <TouchableOpacity
 style={estilo.btnenviar}
-onPress={() => { alterarMusica(id,banda,genero,musica);
+onPress={() => { alterarDiario(id, titulo, texto, data, local);
     }}>
   <Text style={estilo.btntxtenviar}> Alterar </Text>
   </TouchableOpacity>
