@@ -43,7 +43,7 @@ import {
             <Text style={styles.titulo}>Agenda de Contatos Gente Legal e Otários Ignorados</Text>
           </View>
         </View>
-  
+
 <FlatList
 data={diario}
 renderItem={({item}) => {
@@ -59,10 +59,12 @@ renderItem={({item}) => {
       })}>
 
       <View style={estilo.itens}>
-        <Text style={estilo.titulobanda}> Artista/Banda: <Text style={estilo.textobanda}>{item.artistabanda}
-        </Text></Text><Text style={estilo.titulobanda}> Gênero: <Text style={estilo.textobanda}>{item.genero}
+        <Text style={estilo.titulobanda}> Título: <Text style={estilo.textobanda}>{item.titulo}
+        </Text></Text><Text style={estilo.titulobanda}> Texto: <Text style={estilo.textobanda}>{item.texto}
         </Text></Text>
-        <Text style={estilo.titulobanda}> Música: <Text style={estilo.textobanda}>{item.musica}
+        <Text style={estilo.titulobanda}> Data: <Text style={estilo.textobanda}>{item.data}
+        </Text></Text>
+    <Text style={estilo.titulobanda}> Local: <Text style={estilo.textobanda}>{item.local}
         </Text></Text>
       </View>
       </TouchableOpacity>
@@ -77,6 +79,7 @@ renderItem={({item}) => {
   );
 }}
 />
+      </FlatList>    
 
 <TouchableOpacity style={estilo.addbutton} onPress={()=> navigation.navigate("CadastrarDiario")}>
   <MaterialCommunityIcons name="plus-circle-outline" size={70} color="green" />
