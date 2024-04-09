@@ -27,10 +27,9 @@ function addDiario () {
 return (
 
   <View style={estilo.container}>
-<View>
+
   <Text style={estilo.titulo}> Faça registros no {'\n'} Diário aqui </Text>
-  </View>
-  <View>
+
   <TextInput autoCapitalize = 'words' style={estilo.input} placeholder="Digite o título da entrada"
   onChangeText={setTitulo} value={titulo}/>
             <TextInput style={estilo.input} placeholder='Digite o conteúdo' onChangeText={setTexto}
