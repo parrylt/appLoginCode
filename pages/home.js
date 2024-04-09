@@ -79,7 +79,7 @@ renderItem={({item}) => {
   );
 }}
 />
-      </FlatList>    
+
 
 <TouchableOpacity style={estilo.addbutton} onPress={()=> navigation.navigate("CadastrarDiario")}>
   <MaterialCommunityIcons name="plus-circle-outline" size={70} color="green" />
